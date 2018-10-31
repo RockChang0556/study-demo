@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        /*
+            字符串 - unicode
+        */
+        console.log('\u0061');
+        console.log('\u1f602'); // ὠ2 只解析4位的
+        console.log('\u{1f602}'); // 😂 加{}
+
+        /*
+            字符串 - 模板字符串
+            优点: keep format - 原样保存内容格式,包括空格,回车等等
+        */
+
+        let name = 'Rock';
+        console.log(`I am ${name}`)
+
+        /*
+            模块字符串调用函数, 传入的参数分别是 由传入字符串split的数组,第一个字符串模板, 第二个...
+        */
+        let a = `rock`;
+        let fun = (name, aa) => {
+            console.log(name, aa); // ["I am ", ", hh"], "rock"
+        };
+
+        fun`I am ${a}, hh`;
+    </script>
+</body>
+</html>

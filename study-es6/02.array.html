@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 'use strict';
+        /*
+            数组方法
+        */
+        let arr = [1, 5, 9, 10, 3];
+        
+        // includes - 数组中是否存在某值, 返回 bool
+        console.log('includes', arr.includes(2));
+
+        // every - 回调全为真则返回真,否则为假, 返回 bool
+        let rs = arr.every(v => {
+            return v > 0;
+        })
+        console.log('every', rs);
+
+        // some - 回调一个为真则返回真,否则为假, 返回 bool
+        let rs1 = arr.some(v => {
+            return v > 6;
+        })
+        console.log('some', rs1);
+
+        // filter - 回调返回true则加入新的数组, 返回 arr
+        let rs2 = arr.filter(v => {
+            return v > 4;
+        })
+        console.log('filter', rs2);
+
+        // map - 类似forEach,但是必须有返回值 返回回调返回值组成的 arr
+        let rs3 = arr.map(v => {
+            return v > 0;
+        })
+        console.log('map', rs3);
+
+        // reduce - 回调的返回值回作为下一次循环的prev
+        let rs4 = arr.reduce((prev, current) => {
+            return prev + current;
+        }, 0); // 0表示结果的初始值
+        console.log('reduce', rs4);
+
+        let num = [1, 2, 3].map(item => item++).reduce((pre, cur) =>{
+            // console.log(pre);
+            // console.log(cur);
+            pre[cur] = cur - 1;
+            return pre;
+        }, {})
+        console.log('map && reduce', JSON.stringify(num));
+    </script>
+</body>
+</html>

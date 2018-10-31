@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        
+        // 回调地狱
+        /*
+        setTimeout(() => {
+            console.log(1);
+            setTimeout(() => {
+                console.log(2);
+                setTimeout(() => {
+                    console.log(3);
+                })
+            })
+        })
+        */
+        
+        // Promise
+        let p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log(1);
+                reject();
+            }, 3000)
+        })
+        p1.then(() => { // then 与 catch 方法默认会返回一个resolved的 Promise
+            console.log(2);
+        }, () => {
+            console.log('err1');
+            return Promise.reject();
+        }).then(() => {
+            // console.log(3);  
+        }).then(() => {
+            console.log(4);
+        }).catch(() => {
+            // 捕获错误
+            // then的第二个参数捕错优先级高于catch
+            // 建议then的第二个参数与catch不同时使用
+            console.log('全局err');
+        })
+        // await
+        // sync
+    </script>
+</body>
+</html>
