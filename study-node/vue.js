@@ -1,6 +1,8 @@
+
 const commander = require('commander');
 const fs = require('fs');
 
+// 使用方法: node vue create miaov   ====> 同级下创建一个miaov的文件夹
 
 // 设置当前命令的版本,默认-V
 // 参数: 版本号, [命令简写, 命令全称]
@@ -16,7 +18,6 @@ let subCommander = commander.command('create <app-name>')
 
     fs.mkdirSync(appName)
 })
-// 使用方法: node vue create miaov   ====> 同级下创建一个miaov的文件夹
 // subCommander.option('1.1.0')
 
 // 解析来自 process.argv 上的数据,会自动加一个 -h 的参数
