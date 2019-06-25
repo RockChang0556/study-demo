@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            height: 20px;
+            line-height: 20px;
+            /* 加这个属性, 头部可拖动 */
+            -webkit-app-region: drag;
+        }
+        header .head-handle {
+            float: right;
+            -webkit-app-region: no-drag;
+        }
+        header .head-handle span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+        header .head-handle span:hover {
+            background: #f60;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="head-handle">
+            <span class="head-handle-min">-</span>
+            <span class="head-handle-close">×</span>
+        </div>
+    </header>
+    <div class="content">
+        这是内容区
+    </div>
+
+    <script>
+        const {remote} = require('electron');
+
+
+        let oHeadMin = document.querySelector('.head-handle-min');
+        let oHeadClose = document.querySelector('.head-handle-close');
+        // 最小化
+        oHeadMin.onclick = function() {
+            // remote.getCurrentWindow() 获取当前的窗口对象
+            remote.getCurrentWindow().minimize();
+        };
+
+        // 关闭
+        oHeadClose.onclick = function() {
+            remote.app.quit();
+        };
+
+    </script>
+</body>
+</html>

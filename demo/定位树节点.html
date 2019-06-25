@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var msg = [{
+                value: '1000',
+                label: "HR部门工作端",
+                children: [
+                    {
+                        label: "流程任务1",
+                        value: '200',
+                        children: [{
+                                label: "模型应用",
+                                value: '300'
+                            },
+                            {
+                                label: "活动",
+                                value: '400'
+                            }
+                        ]
+                    },
+                    {
+                        label: "HR流程",
+                        value: '500',
+                        children: [{
+                                label: "流程应用",
+                                value: '600'
+                            },
+                            {
+                                label: "流程活动",
+                                value: '700'
+                            }
+                        ]
+                    },
+                    {
+                        label: "HR社保流程",
+                        value: '1',
+                        children: [{
+                                label: "社保应用",
+                                value: '2'
+                            },
+                            {
+                                label: "社保活动",
+                                value: '3'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: "外包部门工作端",
+                value: '4'
+            },
+            {
+                label: "采购部门工作端",
+                value: '5'
+            },
+            {
+                label: "ERP部门工作端",
+                value: '6'
+            }
+        ]
+
+        function getValue(data, findKey,findVal) {
+            // 存储
+            let arr = [];
+            // 计数器（当前的数据进行的次数）
+            let count = 0;
+            getFn(data, []);
+            /*
+            *   getFn(childData, childs)
+            *       childData 每次查找的层级数据
+            *       childs 接受到的当前的数据【第一次传入空数组】
+            */
+            function getFn(childData, childs) {
+                let len = arr.length;
+                for (let z = 0; z < childData.length; z++) {
+                    arr.push([...childs, childData[z][findKey]]);
+                    // 当前项（需要随着进程数据传递）
+                    let childArr = arr[count];
+                    count++;
+                    if (childData[z].children && childData[z].children.length) {
+                        getFn(childData[z].children, childArr);
+                    }
+                }
+            }
+            // 进行数据的查找
+            for(let i=0; i<arr.length; i++){
+                for(let j=0; j<arr[i].length; j++){
+                    if(arr[i][j] === findVal){
+                        return arr[i];
+                    }
+                }
+            }
+        }
+
+
+        let val = getValue(msg, 'value', '700');
+        console.log(val);
+        
+
+    </script>
+</body>
+
+</html>

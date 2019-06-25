@@ -1,0 +1,10 @@
+directories:
+  output: ./dist
+  buildResources: build
+appId: com.rock.app
+productName: rock
+mac:
+  icon: ./source/logo.ico
+  target:
+    - dmg
+electronVersion: 5.0.3
