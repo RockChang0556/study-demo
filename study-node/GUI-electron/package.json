@@ -1,0 +1,32 @@
+{
+  "name": "gui-electron",
+  "version": "1.0.0",
+  "description": "aa",
+  "main": "index4-case.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": ".\\node_modules\\.bin\\electron .",
+    "build": ".\\node_modules\\.bin\\electron-builder -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "devDependencies": {
+    "electron": "^5.0.3",
+    "electron-builder": "^20.44.4"
+  },
+  "build": {
+    "appId": "com.rock.app",
+    "productName": "rock",
+    "directories": {
+      "output": "./dist"
+    },
+    "mac": {
+      "icon": "./source/logo.ico",
+      "target": [
+        "dmg"
+      ]
+    }
+  }
+}

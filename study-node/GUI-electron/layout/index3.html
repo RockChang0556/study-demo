@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>进程通信demo</title>
+</head>
+<body>
+    <h1>app</h1>
+    <button>按钮</button>
+    <script>
+        // 在渲染进程中不能直接获取到主进程的数据
+        // console.log(username);
+        
+
+        /*
+            在渲染进程中也可以使用 electron, 如果 报require找不到的错的话, 
+            new BrowserWindow({
+                webPreferences: {
+                    nodeIntegration: true // 添加这个属性
+                }
+            })
+            
+            electron 对象下面有的属性和方法只能在主进程中使用, 有的只能在渲染进程中使用
+        */ 
+        // const electron = require('electron');
+        // console.log(electron);
+
+        
+        // 如果需要访问主进程的数据, 渲染进程的electron下有一个remote属性,类似于主进程
+        const {remote, ipcRenderer} = require('electron');
+        // remote.getGlobal(name)   获取主进程的全局下数据
+        // console.log(remote.getGlobal('username'));
+
+        let btns = document.querySelectorAll('button');
+        btns[0].onclick = () => {
+            ipcRenderer.send('getData', 'rock');
+        }
+        
+        // 接受主进程被动发送的数据
+        ipcRenderer.on('sendData', (e, arg) => {
+            console.log('主进程被动发送的数据是 ' + arg);
+        });
+
+        // 接受主进程主动发送的数据
+        ipcRenderer.on('hello', (e, ...arg) => {
+            console.log('主进程主动发送的数据是 ' + arg);
+        });
+
+    </script>
+</body>
+</html>
