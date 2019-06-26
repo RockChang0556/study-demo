@@ -8,9 +8,9 @@ const {
 
 app.on('ready', () => {
     let win1 = new BrowserWindow({
-        title: '案例',
-        width: 320,
-        height: 640,
+        title: '音乐下载器',
+        width: 700,
+        height: 400,
         webPreferences: {
             nodeIntegration: true
         },

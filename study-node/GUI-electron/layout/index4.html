@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>音乐下载器</title>
+    <script src="https://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
         header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 20px;
             line-height: 20px;
+            background-color: #fff;
             /* 加这个属性, 头部可拖动 */
             -webkit-app-region: drag;
         }
@@ -31,36 +38,126 @@
             background: #f60;
             color: #fff;
         }
+        .content{
+            width: 700px;
+            padding: 40px 50px 0;
+            height: 380px;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+        .header {
+            height: 70px;
+            text-align: center;
+        }
+        .header input {
+            width: 200px;
+            height: 26px;
+            padding-left: 5px;
+        }
+        .header h2 {
+            height: 35px;
+        }
+        .header button {
+            padding: 0 10px;
+            height: 30px;
+        }
+        .section table{width: 100%;max-height: 600px;text-align: left;overflow: auto;}
+        .section table em{color: red;}
+        .section table td{overflow: hidden;}
     </style>
 </head>
 <body>
-    <header>
-        <div class="head-handle">
-            <span class="head-handle-min">-</span>
-            <span class="head-handle-close">×</span>
+    <div class="wrap">
+        <header>
+            <div class="head-handle">
+                <span class="head-handle-min">-</span>
+                <span class="head-handle-close">×</span>
+            </div>
+        </header>
+        <div class="content">
+            <div class="header">
+                <h2>音乐下载</h2>
+                <input type="text" id="searchInp" placeholder="歌名/歌手名/专辑名">
+                <button id="searchBtn">搜索</button>
+            </div>
+            <section class="section">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width=150>歌曲名</th>
+                            <th>歌手</th>
+                            <th>专辑</th>
+                            <th width=50>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <tr><td>NO Data!</td><tr>
+                    </tbody>
+                </table>
+            </section>
         </div>
-    </header>
-    <div class="content">
-        狗胖!
     </div>
 
     <script>
-        const {remote} = require('electron');
-
-
-        let oHeadMin = document.querySelector('.head-handle-min');
-        let oHeadClose = document.querySelector('.head-handle-close');
-        // 最小化
-        oHeadMin.onclick = function() {
-            // remote.getCurrentWindow() 获取当前的窗口对象
-            remote.getCurrentWindow().minimize();
-        };
-
-        // 关闭
-        oHeadClose.onclick = function() {
-            remote.app.quit();
-        };
-
+            $(function(){
+                $('#searchBtn').on('click', function(){
+                    var val = $('#searchInp').val();
+                    if(!val){alert('请输入内容');return;}
+                    $.ajax({
+                        url: "http://tingapi.ting.baidu.com/v1/restserver/ting?from=qianqian&version=2.1.0&method=baidu.ting.search.common&format=json&query="+val+"&page_no=1&page_size=50",
+                        dataType: "jsonp",
+                        jsonp: "callback",
+                        cache: false,
+                        success: function(data) {
+                            var html = '';
+                            data.song_list.forEach((v, i) => {
+                                html += '<tr><td>'+v.title+'</td><td>'+v.author+'</td><td>'+v.album_title+'</td><td><a href="javascript:;" class="downloadTd" data-id="'+v.song_id+'">下载</a></td></tr>'
+                            })
+                            $('#tbody').html(html)
+                        }
+                    });
+                    $('#searchInp').val('')
+                })
+    
+                $('#tbody').on('click', '.downloadTd', function () {
+                    var id = $(this).data('id');
+                    $.ajax({
+                        url: "http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.song.play&songid="+ id,
+                        dataType: "jsonp",
+                        jsonp: "callback",
+                        cache: false,
+                        success: function(data) {
+                            let href = data.bitrate && data.bitrate.file_link;
+                            let name = data.songinfo && data.songinfo.title;
+                            var a = document.createElement('a');//页面上创建一个标签
+                            a.setAttribute('href', href);//设置a 标签的href，
+                            a.setAttribute('download', name);//设置a 标签的download 属性，并限定下载文件名。
+                            a.setAttribute('id', 'startTelMedicine');
+                            // 防止反复添加
+                            if(document.getElementById('startTelMedicine')) {
+                                document.body.removeChild(document.getElementById('startTelMedicine'));
+                            }
+                            a.click(); //触发a点击事件，下载文件
+                        }
+                    });
+                })
+                
+                const {remote} = require('electron');
+    
+                let oHeadMin = document.querySelector('.head-handle-min');
+                let oHeadClose = document.querySelector('.head-handle-close');
+    
+                // 最小化
+                oHeadMin.onclick = function() {
+                    // remote.getCurrentWindow() 获取当前的窗口对象
+                    remote.getCurrentWindow().minimize();
+                };
+    
+                // 关闭
+                oHeadClose.onclick = function() {
+                    remote.app.quit();
+                };
+            })
     </script>
 </body>
 </html>

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": ".\\node_modules\\.bin\\electron .",
-    "build": ".\\node_modules\\.bin\\electron-builder -m"
+    "build": ".\\node_modules\\.bin\\electron-builder -w"
   },
   "keywords": [],
   "author": "",
@@ -23,13 +23,13 @@
       "output": "./dist"
     },
     "nsis": {
-        "oneClick": false,
-        "allowToChangeInstallationDirectory": true,
-        "installerIcon": "./source/logo.ico",
-        "installerHeader": "./source/header.jpeg",
-        "license": "./source/license.txt",
-        "perMachine": true,
-        "runAfterFinish": true
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./source/logo.ico",
+      "installerHeader": "./source/header.jpeg",
+      "license": "./source/license.txt",
+      "perMachine": true,
+      "runAfterFinish": true
     },
     "dmg": {
       "contents": [
@@ -54,7 +54,10 @@
     },
     "win": {
       "icon": "./source/logo.ico",
-      "target": ["nsis", "zip"]
+      "target": [
+        "nsis",
+        "zip"
+      ]
     }
   }
 }
