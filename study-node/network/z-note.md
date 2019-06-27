@@ -54,8 +54,48 @@ clientScoket.close();
     3. 启动客户端  node client
 
 #### TCP ( net )
+> 官网 ( http://nodejs.cn/api/net.html )
 > net 模块提供了创建基于流的 TCP 或 IPC 服务器( net.creatServer() )和客户端( new.creatConnection() )的异步网络API
 ```js
 // 使用
 const net = require('net');
+
+// 服务端 net.Server 类
+const server = net.creatServer(); // 或 new net.Server()
+
+// 客户端 net.Scoket 类
+const clientScoket = net.createConnection(); // 或 new net.Scoket()
 ```
+
+- **通讯**
+```js
+// 服务端
+server.on('connection', socket => { // 当有客户端连接时触发
+    // socket 当前连接的 socket 对象
+    // console.log(socket.remoteAddress); // 客户端的地址
+    // console.log(socket.remotePort); // 客户端的端口
+
+    socket.write('hello'); // 发送
+
+    socket.on('data', data => {
+        console.log('客户端过来的数据: ' + data); // 接受 => hhhh
+    });
+});
+```
+
+```js
+// 客户端
+clientScoket.on('data', data => {
+    console.log('服务端过来的数据: ' + data); // 接受 => hello
+
+    clientScoket.write('hhhh'); // 发送
+});
+```
+
+- **数据包丢失问题**
+> 在数据传输过程中不仅仅只有主体数据(你要发送的主要内容)，还包括了一些其他的数据信息，比如发送端的P、端口等，以方便接受者对数据进行处理与回复<br>
+如果发送的数据比较大的话，还会对发送的数据进分包，每一个包中包含有一部分主体数据以及上面提到的额外信息，接收方在接收到数据以后会数据包进行整合等一系列操作<br>
+这种传输规则就是数据传输协议中的规定，不同的协议对传输规则有不同的规定
+
+- 问题描述: 服务端传输数据过大的话, 会打包数据, on('data')就会触发多次
+- 解决方法: 在on('data')里拼接数据, 在on('end')里完成拼接并执行下一步操作
