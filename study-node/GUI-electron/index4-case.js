@@ -2,8 +2,7 @@
 
 const {
     app,
-    BrowserWindow,
-    ipcMain
+    BrowserWindow
 } = require('electron');
 
 app.on('ready', () => {

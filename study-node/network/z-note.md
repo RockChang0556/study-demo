@@ -52,3 +52,10 @@ clientScoket.close();
     1. 进入 /UDP 目录
     2. 启动服务端  node server
     3. 启动客户端  node client
+
+#### TCP ( net )
+> net 模块提供了创建基于流的 TCP 或 IPC 服务器( net.creatServer() )和客户端( new.creatConnection() )的异步网络API
+```js
+// 使用
+const net = require('net');
+```
