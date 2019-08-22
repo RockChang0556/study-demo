@@ -7,6 +7,8 @@
 
 - **IP**
     - Internet Protocol  网络协议
+    - 规定了互联的计算机之间的定位规则
+        
 
 - **IP协议**
     - 所谓协议就是一套规则,而IP协议就是为了能够让计算互连的一种规则,为了表示每台连入网络中的计算机(网卡)的唯一性, 每个连入网络的网卡都会绑定一个IP地址(固定-买断, 临时分配)
@@ -99,3 +101,30 @@ clientScoket.on('data', data => {
 
 - 问题描述: 服务端传输数据过大的话, 会打包数据, on('data')就会触发多次
 - 解决方法: 在on('data')里拼接数据, 在on('end')里完成拼接并执行下一步操作
+
+
+### HTTP
+> 超文本传输协议, 传输 ht (超文本) 这样的文本的规则
+- 规定了请求发送的数据格式
+    - 请求行, 请求头, 请求正文
+- 规定了返回的数据的格式
+- 传输的规则
+
+#### request格式
+分为三部分
+
+- Request Line: 请求行
+    - method: 请求方式, 如'get', 'post', 'put'... 不同的请求方式所得到的结果也会不一样
+    - path-to-resource: 请求资源,也就是url(统一资源定位符), url的作用是用来定位我们想获取的资源在网络中的位置, 它也有一套规则
+    - http/version-number: 表示当前所使用的http协议的版本, 主流为1.1, 最新为2.0
+- Request header: 请求头
+    - Host: 所请求的主机名,如www.baidu.com
+    - Accept: 浏览器可以接收的内容类型, 如 text/html, img/gif
+    - Accept-Language: 浏览器可以接受的语言类型, 如 zh-CN,zh;q=0.9, 首选zh-CN,q优先性为0.9
+    - Accept-encoding: 浏览器可以接受的内容压缩方式, 如gzip
+    - User-Agent: 请求的代理信息(谁发出的这个请求), 如firfox
+    - Connection: 连接类型, 如 keep-alive(保持激活,http/1.1新增功能), close(立即关闭)
+    - Keep-Alive: tcp连接保持的时间(s)
+    - Cookie
+- Request body: 请求正文
+    - 就是前端需要传给后端的参数
