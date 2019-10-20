@@ -93,6 +93,6 @@ let strLength2: number = (someValue as string).length;
     有时候不一定需要使用强制类型声明, 在某些情况下TS可以根据语境进行类型推导
 */
 let test = 1; // TS会自动推导出test是number类型的
-test = '111';
+test = '111'; // error
 
 
