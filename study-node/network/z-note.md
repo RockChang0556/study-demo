@@ -39,6 +39,7 @@
     - 效率要求相对高, 但对准确性要求低的场景
     - 在线视频, 网络语音电话
 
+PS: 在实际应用中, 不同的软件都会用到这样的方式来传输数据, 不过可能在具体的数据组织上有个性的设置, 所以大部分软件都会对自己要发送的数据进行二次封装, 形成各式各样的其他传输协议: HTTP(超文本传输协议) / FTP(文件传输协议)) / MAIL(邮件传输协议)
 #### UDP ( dgram )
 > 官网 ( http://nodejs.cn/api/dgram.html )
 > dgram模块提供了 UDP 数据包 socket 的实现
@@ -105,6 +106,8 @@ clientScoket.on('data', data => {
 
 ### HTTP
 > 超文本传输协议, 传输 ht (超文本) 这样的文本的规则
+基于 TCP / IP 通信协议
+是单向单链接, 无状态协议
 - 规定了请求发送的数据格式
     - 请求行, 请求头, 请求正文
 - 规定了返回的数据的格式
@@ -128,3 +131,17 @@ clientScoket.on('data', data => {
     - Cookie
 - Request body: 请求正文
     - 就是前端需要传给后端的参数
+
+#### response格式
+同样分为三部分
+
+- Response Line: 响应行
+    - HTTP / version-number: http协议的版本号
+    - status-code: 状态码, 如200, 404...
+    - message: 状态码对应的描述
+- Response Header: 响应头
+    - Content-Type<实体首部>: 发送内容类型
+    - Content-Length<实体首部>: 发送内容长度
+    - Localtion<响应首部>: 重定向地址
+    - Cookie<请求首部>: 包含要发给服务器的cookie
+    - Set-Cookie<响应首部>: 服务器向客户端发送cookie
