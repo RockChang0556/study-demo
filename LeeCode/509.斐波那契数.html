@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    /* 
+      509. 斐波那契数
+
+     */
+
+    /* 
+     1. 递归
+     */
+     function fib(n) {
+       if (n < 2 && n >= 0) return n
+       return fib(n-1) + fib(n-2)
+     }
+
+     /* 
+      2. 动态规划
+      */
+    function fib2(n) {
+      let arr = [0, 1];
+      for (let i = 2; i <= n; i++) {
+        arr[i] = arr[i-1] + arr[i-2]
+      }
+      return arr[n]
+    }
+     console.log('1', fib(10))
+     console.log('2', fib2(10))
+  </script>
+</body>
+</html>

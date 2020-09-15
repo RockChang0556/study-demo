@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background: #f2f2f2;
+        }
+        header {
+            width: 100%;
+            height: 64px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: skyblue;
+        }
+        .el-container {
+            margin: 106px 0 40px 264px;
+        }
+        .el-container aside {
+            width: 240px;
+            height: calc(100vh - 64px);
+            position: fixed;
+            left: 0;
+            top: 64px;
+            background: #888;
+        }
+        .el-row {
+            width: 100%;
+            padding: 10px;
+            position: fixed;
+            left: 264px;
+            top: 64px;
+            background: #f2f2f2;
+        }
+        .el-row1 {
+            background-color: #fff;
+            margin-right: 24px;
+            height: 3000px;
+        }
+        .el-row1 p {
+            line-height: 200px;
+        }
+        footer {
+            border-top: 24px solid #f2f2f2;
+            position: fixed;
+            bottom: 0;
+            left: 240px;
+            width: 100%;
+            height: 40px;
+            background: #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <section>
+            <header></header>
+            <section class="el-container">
+                <aside>111</aside>
+                <main>
+                    <div class="el-row">bread</div>
+                    <div class="el-row1">
+                        <p>111</p>
+                        <p>2</p>
+                        <p>3</p>
+                        <p>1411</p>
+                    </div>
+                    <footer></footer>
+                </main>
+            </section>
+        </section>
+    </div>
+</body>
+</html>

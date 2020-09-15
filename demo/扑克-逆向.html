@@ -13,27 +13,27 @@
         let arr1 = [];
         
         for (let i = n; i > 0; i --) {
-            if(i%2){
+            if (i % 2) {
                 arr.unshift(i);
-            }else {
+            } else {
                 arr.push(i);
             }
         }
         arr.forEach((v, i) => {
-            arr1[v-1] = i+1;
-        })
+            arr1[v - 1] = i + 1;
+        });
         let arr2 = arr1.concat();
         console.log(arr2);
 
         let res1 = [];
         let res2 = [];
         let i = 0;
-        while(arr2.length) {
-            if(i%2){
-                arr2.push(arr2.slice(0,1)[0]);
+        while (arr2.length) {
+            if (i % 2) {
+                arr2.push(arr2.slice(0, 1)[0]);
                 arr2.shift();
                 console.log(arr2);
-            }else {
+            } else {
                 res1.push(arr2[0]);
                 arr2.shift();
             }

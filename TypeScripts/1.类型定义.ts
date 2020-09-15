@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* 
     联合类型: 多个类型中的一个, 或的关系
         let a: string|number;
@@ -70,7 +71,7 @@ create(42); // Error
 
 /* 
     其他类型
-    null, undefined   - 基本不用,是其他类型的子类型( null可以赋给其他如number等类型,反之则不行 )
+    null, undefined   - 基本不用,是其他类型的子类型( null可以赋给其他如 number等类型,反之则不行 )
     any  - 任意类型
     void  - 像是与any相反,表示没有任何类型, 比如一个函数没有返回值时 function getName(): void { // something... }
     never - 基本不用, 永不存在的值的类型
