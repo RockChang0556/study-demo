@@ -16,8 +16,6 @@
 */
 let a: String = 'rock'; // √
 let b: string = new String('rock'); // ×
-
-
 /* 
     数组的声明
         具有相同类型的一组有序数据的集合
