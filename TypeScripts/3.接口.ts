@@ -16,6 +16,7 @@ interface AnimalType {
 	type: string
 	getType(): string
 }
+// 在函数中使用接口
 class Animal1 implements AnimalType {
   public type: string;
   constructor(type: string) {
