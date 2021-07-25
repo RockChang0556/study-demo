@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <script>
     /* 
@@ -42,7 +44,7 @@
 
       用时: 100ms
     */
-    var countBinarySubstrings = function(s) {
+    var countBinarySubstrings = function (s) {
       let count = s[0]
       let num = 0
       let arr = []
@@ -59,11 +61,11 @@
         }
       })
       let nums = 0
-      for(let i = 1; i< arr.length; i++) {
+      for (let i = 1; i < arr.length; i++) {
         nums += Math.min(arr[i - 1], arr[i])
       }
     };
-    
+
     /* 
       分组，相邻组比较2
       把字符串按数字分组切割，如：['00', '11', '00', '11']
@@ -71,43 +73,46 @@
       2. match
 
       用时: 104ms
-    */ 
-    var countBinarySubstrings1 = function(s) {
-        // const arr = s.replace(/10/g, '1 0').replace(/01/g, '0 1').split(/\s/)
-        const arr = s.match(/0+|1+/g);
-        let n = 0
-        for(i=0; i< arr.length - 1; i++) {
-            n += Math.min(arr[i].length, arr[i + 1].length)
-        }
-        return n
+    */
+    var countBinarySubstrings1 = function (s) {
+      // const arr = s.replace(/10/g, '1 0').replace(/01/g, '0 1').split(/\s/)
+      const arr = s.match(/0+|1+/g);
+      let n = 0
+      for (i = 0; i < arr.length - 1; i++) {
+        n += Math.min(arr[i].length, arr[i + 1].length)
+      }
+      return n
     };
 
     /* 
       用时最少: 76ms
     */
-    var countBinarySubstrings2 = function(s) {
+    var countBinarySubstrings2 = function (s) {
       let last = 0, // 记录之前一种数字的个数
-          res = 0, // 符合期望的个数
-          cur = 1; // 记录当前数字的个数
+        res = 0, // 符合期望的个数
+        cur = 1; // 记录当前数字的个数
 
       for (let i = 1; i < s.length; i++) {
-          if (s[i] === s[i - 1]) {
-              cur++;
-          } else {
-              last = cur;
-              cur = 1;
-          }
-          if (last >= cur) {
-              res++;
-          }
+        if (s[i] === s[i - 1]) {
+          cur++;
+        } else {
+          last = cur;
+          cur = 1;
+        }
+        if (last >= cur) {
+          res++;
+        }
       }
       return res;
     };
 
-    
+
     let s = '10101';
     let s1 = '111100011000';
-    console.log('1', countBinarySubstrings2(s1))
+    console.time('s')
+    console.log('1', countBinarySubstrings1(s1))
+    console.timeEnd('s')
   </script>
 </body>
+
 </html>

@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-    .outer {
-        width: 200px;
-        height: 200px;
-        padding: 10px;
-        position: relative;
-        background-color: #000;
-        word-wrap: break-word;
-        color: #f60;
-        overflow-y: auto;
-        /* text-overflow: ellipsis; */
-    }
-    /* .outer::before {
+        .outer {
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            position: relative;
+            background-color: #000;
+            word-wrap: break-word;
+            color: #f60;
+            overflow-y: auto;
+            /* text-overflow: ellipsis; */
+        }
+
+        /* .outer::before {
         content: "";
         width: 15px;
         height: 1px;
@@ -35,17 +37,30 @@
         bottom: 0;
         background: #f60;
     } */
-    .inner {
-        width: 60px;
-        height: 60px;
-        padding-top: 20%;
-    }
+        .inner {
+            width: 60px;
+            height: 60px;
+            padding-top: 20%;
+        }
+
+        .rig {
+            background-color: rgba(255, 102, 0, 0.7);
+            background-color: #f60;
+            opacity: 0.7;
+            color: #fff;
+            margin-top: -10px;
+        }
     </style>
 </head>
+
 <body>
     <div class="outer">
-        <!-- <div class="inner"></div> -->
-        sfjslsdjfdlsjflja;kjf;lkajdslfk;jassakjdlaksjdlkasjdlkasjdkjaslkdjaslkdjlaskjdlkasjflkasjlfhajkshfjashfkjahslkdjflkajsdlkfjlkasjdf;kajdfkjas;lkdfj;alksjdfkjasdlkfjaslkdjflkajsdlkgkasdjgk;ajsdfjasdjflaskjdf;kajsd;kfjaskdjfkjasd;fljaskdjflkasjdf;jasdk;fjklasdjfksjadflkjasdklfjas;dklfj;aklsdjf;kasjdfkljsdkgjds;agjkhakdjhgjkd
+        <div class="inner">
+            哈哈哈哈哈哈哈
+        </div>
+        <div class="rig">
+            sfjslsdjfdlsjflja;kjf;lkajdslfk;jassakjdlaksjdlkasjdlkasjdkjaslkdjaslkdjlaskjdlkasjflkasjlfhajkshfjashfkjahslkdjflkajsdlkfjlkasjdf;kajdfkjas;lkdfj;alksjdfkjasdlkfjaslkdjflkajsdlkgkasdjgk;ajsdfjasdjflaskjdf;kajsd;kfjaskdjfkjasd;fljaskdjflkasjdf;jasdk;fjklasdjfksjadflkjasdklfjas;dklfj;aklsdjf;kasjdfkljsdkgjds;agjkhakdjhgjkd
+        </div>
     </div>
     <script>
         // function fun(n, o) {
@@ -56,7 +71,7 @@
         // };
 
         // var a = fun(1)(2)(3)(4);
-        
+
         // for (var i = 0; i < 10; i++) {
         //     setTimeout(function(){
         //         console.log(i);
@@ -82,7 +97,9 @@
                     sum += m;
                 }
                 if (sum === num) {
-                    arr.push(Array.from({length: m - i + 1}).map((v, k) => k + i));
+                    arr.push(Array.from({
+                        length: m - i + 1
+                    }).map((v, k) => k + i));
                 }
             }
             console.log(arr);
@@ -91,4 +108,5 @@
         find(15);
     </script>
 </body>
+
 </html>
