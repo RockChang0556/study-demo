@@ -105,7 +105,24 @@
             console.log(arr);
         };
 
-        find(15);
+        // find(15);
+        class User {
+            name;
+            age;
+            constructor() {
+                this.name = 'r'
+                this.age = 18
+            }
+        }
+        class User2 extends User {
+            sex
+            constructor(name) {
+                super(name);
+                this.sex = '男'
+            }
+        }
+        const user = new User2()
+        console.log('user', user)
     </script>
 </body>
 
