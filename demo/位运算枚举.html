@@ -1,0 +1,42 @@
+<!--
+ * @Author: Rock Chang
+ * @Date: 2022-02-09 14:28:19
+ * @LastEditTime: 2022-02-09 14:29:22
+ * @Description: 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const SKILLS = {
+      CSS: 1,
+      JS: 1 << 1,
+      HTML: 1 << 2,
+      WEB_GL: 1 << 3
+    }
+
+    let skills = 0
+    // 增加一项他会的技能
+    function addSkill(skill) {
+      skills = skills | skill // 加上
+    }
+
+    addSkill(SKILLS.CSS) // 1
+    addSkill(SKILLS.HTML) // 4
+
+    // 判断他是否会 CSS
+    // SKILLS.CSS & skills // 1 (0 代表不会，非0代表会)
+    console.log('[ SKILLS.CSS & skills ]-38', SKILLS.HTML & skills);
+  </script>
+</body>
+
+</html>

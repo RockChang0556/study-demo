@@ -1,0 +1,77 @@
+<!--
+ * @Author: Rock Chang
+ * @Date: 2022-01-21 18:58:24
+ * @LastEditTime: 2022-01-24 14:54:28
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const obj = {
+      '/a/b/c/d': 1,
+      '/a/b/c/e': 1,
+      '/a/b/c/d1': 1,
+      '/a/b/c2/d': 1,
+      '/a/b/c1': 2,
+      '/a/b/c3': 1,
+      '/a1/b/f': 1,
+    };
+    const resObj = {
+      a: {
+        b: {
+          c: {
+            d: 1,
+            e: 1,
+            d1: 1
+          },
+          c2: {
+            d: 1
+          },
+          c1: 1,
+          c3: 1
+        }
+      },
+      a1: {
+        b: {
+          f: 1
+        }
+      }
+    };
+
+
+
+    function format(obj) {
+      function deepMerge(obj1, obj2) {
+        let key;
+        for (key in obj2) {
+          // 如果target(也就是obj1[key])存在，且是对象的话再去调用deepMerge，否则就是obj1[key]里面没这个对象，需要与obj2[key]合并
+          // 如果obj2[key]没有值或者值不是对象，此时直接替换obj1[key]
+          obj1[key] =
+            obj1[key] &&
+            obj1[key].toString() === "[object Object]" &&
+            (obj2[key] && obj2[key].toString() === "[object Object]") ?
+            deepMerge(obj1[key], obj2[key]) :
+            (obj1[key] = obj2[key]);
+        }
+        return obj1;
+      }
+      const arr = Object.keys(obj).map((key) => key.split('/').slice(1).reduceRight((p, c) => ({
+        [c]: p
+      }), obj[key]))
+      return arr.reduce((p, c) => deepMerge(c, p), {})
+    }
+    console.log('', format(obj))
+  </script>
+
+</body>
+
+</html>

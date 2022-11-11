@@ -1,0 +1,427 @@
+<!--
+ * @Author: Rock Chang
+ * @Date: 2022-01-21 11:00:41
+ * @LastEditTime: 2022-01-21 14:17:11
+ * @Description: 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .orizontal-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      pointer-events: none;
+    }
+
+    .vertical-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      pointer-events: none;
+    }
+
+    p {
+      font-family: sans-serif;
+      font-size: 6vmin;
+      margin: 16px;
+      font-weight: bold;
+      color: #fff;
+      position: absolute;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+    }
+
+    p.top {
+      left: 50%;
+      top: 0;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+      margin-left: 3px;
+    }
+
+    p.bottom {
+      left: 50%;
+      bottom: 0;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+      margin-left: 3px;
+    }
+
+    p.left {
+      top: 49%;
+      left: 0;
+      -webkit-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: rotate(-90deg) translate(-50%, 0);
+      -ms-transform: rotate(-90deg) translate(-50%, 0);
+      transform: rotate(-90deg) translate(-50%, 0);
+    }
+
+    p.right {
+      top: 50%;
+      right: 0;
+      -webkit-transform-origin: 100% 0;
+      -ms-transform-origin: 100% 0;
+      transform-origin: 100% 0;
+      -webkit-transform: rotate(90deg) translate(50%, 0);
+      -ms-transform: rotate(90deg) translate(50%, 0);
+      transform: rotate(90deg) translate(50%, 0);
+    }
+
+    .overflow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    section.vertical-line {
+      position: absolute;
+      top: -50vh;
+      width: 28px;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+      height: 200vh;
+      background-color: #fff;
+      mix-blend-mode: difference;
+      pointer-events: none;
+      -webkit-transform-origin: center center;
+      -ms-transform-origin: center center;
+      transform-origin: center center;
+    }
+
+    section.tutorial {
+      position: absolute;
+      width: 300px;
+      max-width: 90%;
+      height: 300px;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      border-radius: 10px;
+      text-align: center;
+      background-color: #101010;
+      color: #fff;
+      font-family: sans-serif;
+      letter-spacing: 1px;
+      z-index: 100;
+    }
+
+    section.tutorial hr {
+      margin: 0 0 0px 0;
+      pointer-events: none;
+    }
+
+    section.tutorial h1 {
+      text-align: center;
+      text-transform: uppercase;
+      padding: 8px;
+      margin: 0;
+      background-color: #333;
+      color: #fff;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+      pointer-events: none;
+    }
+
+    section.tutorial p {
+      margin: 0;
+      font-weight: 100;
+      font-size: 16px;
+      text-transform: none;
+      letter-spacing: normal;
+      padding: 16px 10px;
+      height: 160px;
+      overflow: hidden;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    section.tutorial p a {
+      color: yellow;
+      text-decoration: none;
+    }
+
+    .btn {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -150%);
+      -ms-transform: translate(-50%, -150%);
+      transform: translate(-50%, -150%);
+      background-color: #333;
+      height: 16px;
+      color: #fff;
+      line-height: 16px;
+      text-align: center;
+      border-radius: 10px;
+      padding: 8px 16px;
+      font-weight: bold;
+      cursor: pointer;
+      -webkit-transition: .2s all;
+      -o-transition: .2s all;
+      transition: .2s all;
+    }
+
+    .btn:hover {
+      background-color: #444;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    section.panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: #fff;
+      opacity: .4;
+      mix-blend-mode: difference;
+
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="orizontal-container">
+    <p class="top">bnkr</p>
+    <p class="bottom">LRNZDSS</p>
+  </div> -->
+  <!-- <div class="vertical-container">
+    <p class="left">superhi</p>
+    <p class="right">matterjs</p>
+  </div> -->
+  <section class="shapes"></section>
+  <!-- <div class="overflow">
+    <section class="vertical-line"></section>
+  </div> -->
+  <section class="panel hide">
+
+  </section>
+
+  <script src="./matter.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      const { //aliases
+        Engine,
+        Render,
+        World,
+        Bodies,
+        MouseConstraint,
+        Composites
+      } = Matter
+
+      const imageUrl = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1532332/'
+
+      const images = [
+        imageUrl + 'valeria.png',
+        imageUrl + 'matilde.png',
+        imageUrl + 'marco.png',
+        imageUrl + 'lia.png',
+        imageUrl + 'margherita.png',
+        imageUrl + 'francesco.png',
+        imageUrl + 'fabio.png',
+        imageUrl + 'emanuele.png',
+        imageUrl + 'frederic.png',
+        imageUrl + 'massimo.png',
+        imageUrl + 'carretti.png'
+      ]
+
+      //add pluign
+      Matter.use('matter-wrap')
+
+      //depolyed here
+      const sectionTag = document.querySelector('section.shapes')
+
+      //height and width of the page
+      const w = window.innerWidth
+      const h = window.innerHeight
+
+      //matter.js needs 2 things: an engine and a renderer
+
+      //let's create the engine
+      const engine = Engine.create()
+
+      //and then the renderer function
+      const renderer = Render.create({
+        element: sectionTag,
+        engine: engine,
+        options: {
+          height: h,
+          width: w,
+          background: '#fff',
+          wireframes: false,
+          pixelRatio: window.devicePixelRatio
+        }
+      })
+
+      //let's add something to the canvas that matterjs put inside the section tag
+      const smallCircle = function (x, y, r) {
+        return Bodies.circle(x, y, r, { //inside this object we put the circle options 
+          frictionAir: (0.05 * Math.random() + 0.005),
+          restitution: 0.9, //bouncing effect
+          render: {
+            fillStyle: "white"
+          },
+          plugin: { //here we add our wrap pluign
+            wrap: {
+              min: {
+                x: 0,
+                y: 0
+              },
+              max: {
+                x: w,
+                y: h
+              }
+            }
+          }
+        })
+      }
+
+      const imageCircle = function (x, y, image) {
+        return Bodies.circle(x, y, 28, { //inside this object we put the circle options 
+          frictionAir: 0.03,
+          restitution: 0.9, //bouncing effect
+          render: {
+            sprite: {
+              texture: image,
+              xScale: 0.8,
+              yScale: 0.8
+            }
+          },
+          plugin: { //here we add our wrap pluign
+            wrap: {
+              min: {
+                x: 0,
+                y: 0
+              },
+              max: {
+                x: w,
+                y: h
+              }
+            }
+          }
+        })
+      }
+
+      //let's add our big ball in the center of the screen
+      // const bigBall = Bodies.circle(w / 2, h / 2, 42, {
+      //   isStatic: true, //with true we remove movement
+      //   restitution: 0,
+      //   render: {
+      //     fillStyle: "#ffffff"
+      //   }
+      // })
+
+      // //add this shape to the world
+      // World.add(engine.world, bigBall)
+
+      const left = Bodies.rectangle(0, h / 2, 20, h, {
+        isStatic: true, //with true we remove movement
+        // restitution: 0,
+      })
+      const right = Bodies.rectangle(w, h / 2, 20, h, {
+        isStatic: true, //with true we remove movement
+        // restitution: 0,
+      })
+      const bottom = Bodies.rectangle(w / 2, h, w, 10, {
+        isStatic: true, //with true we remove movement
+        // restitution: 0,
+      })
+      World.add(engine.world, [left, right, bottom])
+      //add the shape to the 'world' with the right click
+      document.addEventListener("contextmenu", function (e) {
+        const circle = smallCircle(e.x, e.y, (15 * Math.random() + 5))
+        World.add(engine.world, circle)
+      })
+
+      setInterval(() => {
+        let i = Math.floor(Math.random() * (images.length + 1));
+        const circle = imageCircle(i + (Math.random() * w), i + (-Math.random() * h), images[i])
+        World.add(engine.world, circle)
+      }, 500)
+      //add an initial number = images.length of ball with images
+      // for (let i = 0; i < images.length; i++) {}
+
+      // for (let i = 0; i < 20; i++) {
+      //   const circle = smallCircle(w - (i * 111 + 100), h - (i * 111 + 100), (15 * Math.random() + 5))
+      //   World.add(engine.world, circle)
+      // }
+
+
+      //add the ability to pick the shapes with the mouse
+      const mouseControl = MouseConstraint.create(engine, {
+        element: sectionTag,
+        constraint: {
+          render: {
+            visible: false
+          }
+        }
+      })
+
+      //add this ability to the 'world'
+      World.add(engine.world, mouseControl)
+
+      //run the engine and the renderer
+      Engine.run(engine)
+      Render.run(renderer)
+
+      //change gravity repeatedly
+      let time = 0
+      const changeGravity = function () {
+        time = time + 0.01
+
+        engine.world.gravity.y = 1 || Math.cos(time) //cos allows us to convert numbers to an ondulation
+
+        requestAnimationFrame(changeGravity)
+      }
+
+      changeGravity() // call function
+
+      window.addEventListener("deviceorientation", function (e) { //just for mobile devices
+        engine.world.gravity.x = event.gamma / 50
+        engine.world.gravity.y = event.beta / 50
+      })
+
+
+
+    }, false);
+  </script>
+</body>
+
+</html>

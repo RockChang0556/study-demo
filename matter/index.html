@@ -1,0 +1,90 @@
+<!--
+ * @Author: Rock Chang
+ * @Date: 2022-01-19 15:32:33
+ * @LastEditTime: 2022-01-19 19:04:37
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="./matter.min.js"></script>
+  <script>
+    //Engine是引擎，Render是渲染器，World是表演环境，Bodies可以用来创建各种形状的物体。
+    const {
+      Engine,
+      Render,
+      World,
+      Body,
+      Bodies,
+      MouseConstraint,
+      Composites
+    } = Matter
+
+    var engine = Engine.create();
+    //render(渲染器)将要渲染的物理引擎是之前所创建的engine，而渲染的对象是html网页的body
+    var render = Render.create({
+      element: document.body,
+      engine: engine
+    });
+
+    //参数(500,170,40,260）中，前两个是物体坐标，后两个分别是宽度和长度。 
+    //需要注意的是，这里的坐标系统中，500和170是矩形的中心所在位置
+    //而html的canvas中坐标描述的是矩形的左上角。
+    var boxA = Bodies.rectangle(200, 200, 80, 80);
+    //将isStatic设为true，即是静止的
+    var ground = Bodies.rectangle(400, 510, 800, 30, {
+      isStatic: true
+    });
+    // add all of the bodies to the world
+    // World.add(engine.world, [boxA, ground]);
+    World.add(engine.world, [ground]);
+
+
+    // 创建刚体
+    var rect = Bodies.rectangle(200, 100, 50, 50), // 矩形
+      circle = Bodies.circle(300, 100, 25), // 圆
+      polygon = Bodies.polygon(450, 100, 8, 25), // 多边形
+      trapezoid = Bodies.trapezoid(590, 100, 50, 50, 3); // 梯形
+    // 将刚体添加到世界中
+    // World.add(engine.world, [rect, circle, polygon, trapezoid]);
+
+
+
+    //添加鼠标控制
+    var mouseConstraint = MouseConstraint.create(engine, {});
+    // var boxA = Bodies.rectangle(300, 300, 500, 100),
+    //   boxB = Bodies.rectangle(300, 300, 100, 500);
+    // //Body.create() 会生成物体，如果不传入参数，
+    // //会在（0,0）处生成一个物体。传入参数parts，
+    // //将两个部分结合生成新的物体
+    // var cup = Body.create({
+    //   parts: [boxA, boxB]
+    // });
+    // World.add(engine.world, [cup, mouseConstraint]);
+    World.add(engine.world, [mouseConstraint]);
+
+
+    //第一个物体在位置（50，100），共6列3行，每个物体为长50宽20的矩形所够成的物体堆
+    var stack = Composites.stack(50, 100, 6, 3, 0, 0, function (x, y) {
+      return Bodies.rectangle(x, y, 50, 20);
+    });
+    //生成每个物体为圆的堆
+    var stack_circle = Composites.stack(80, 100, 7, 5, 0, 0, function (x, y) {
+      return Bodies.circle(x, y, 20);
+    });
+    World.add(engine.world, [stack, stack_circle]);
+
+    Engine.run(engine);
+    Render.run(render);
+  </script>
+</body>
+
+</html>
