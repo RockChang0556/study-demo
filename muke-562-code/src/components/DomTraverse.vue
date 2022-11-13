@@ -1,3 +1,10 @@
+<!--
+ * @Author: Rock Chang
+ * @Date: 2022-11-12 17:57:20
+ * @LastEditTime: 2022-11-13 22:28:36
+ * @Description: 遍历 DOM 树，广度优先 & 深度优先
+-->
+
 <template>
 	<div id="DomTraverse">
 		<p>
@@ -44,18 +51,21 @@ function depthFirstTraverse(dom: Node) {
 /** 深度优先遍历 dom --- 栈 */
 function depthFirstTraverse2(dom: Node) {
 	const stack: Node[] = [];
-	stack.unshift(dom);
+	stack.push(dom); // 入栈
 
 	while (stack.length) {
-		const top = stack.shift();
+		const top = stack.pop();
 		if (top === undefined) break;
 		logNode(top);
 
 		const child = top.childNodes;
 		if (child.length) {
-			child.forEach((d) => {
-				stack.unshift(d);
-			});
+			// 注意！！ 反向压栈
+			Array.from(child)
+				.reverse()
+				.forEach((d) => {
+					stack.push(d);
+				});
 		}
 	}
 }
@@ -63,12 +73,12 @@ function depthFirstTraverse2(dom: Node) {
 /** 广度优先遍历 dom --- 队列 */
 function breadthFirstTraverse(dom: Node) {
 	const queue: Node[] = [];
-	queue.push(dom); // 入队
+	queue.push(dom); // 从尾入队
 
 	while (queue.length) {
-		const top = queue.shift(); // 出队
+		const top = queue.shift(); // 从头出队
 		if (top === undefined) break;
-		logNode(top); 
+		logNode(top);
 
 		const child = top.childNodes;
 		if (child.length) {
@@ -81,7 +91,7 @@ function breadthFirstTraverse(dom: Node) {
 
 onMounted(() => {
 	const dom = document.querySelector('#DomTraverse');
-	dom && breadthFirstTraverse(dom);
+	dom && depthFirstTraverse2(dom);
 });
 </script>
 
