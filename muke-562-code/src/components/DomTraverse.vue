@@ -1,11 +1,12 @@
 <!--
  * @Author: Rock Chang
  * @Date: 2022-11-12 17:57:20
- * @LastEditTime: 2022-11-13 22:28:36
+ * @LastEditTime: 2022-11-14 23:17:38
  * @Description: 遍历 DOM 树，广度优先 & 深度优先
 -->
 
 <template>
+	遍历 DOM 树，广度优先 & 深度优先
 	<div id="DomTraverse">
 		<p>
 			p

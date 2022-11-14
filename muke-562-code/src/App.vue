@@ -1,12 +1,15 @@
 <template>
 	<!-- <HelloWorld msg="Vite + Vue" /> -->
-	<DomTraverse />
+	<!-- <DomTraverse /> -->
+	<LazyMan />
 </template>
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+
 // import HelloWorld from './components/HelloWorld.vue';
-import DomTraverse from './components/DomTraverse.vue';
+// import DomTraverse from './components/DomTraverse.vue';
+import LazyMan from './components/LazyMan.vue';
 </script>
 
 <style scoped>
