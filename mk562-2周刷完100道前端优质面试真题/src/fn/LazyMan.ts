@@ -1,22 +1,19 @@
-<!--
+/*
  * @Author: Rock Chang
- * @Date: 2022-11-14 22:46:06
- * @LastEditTime: 2022-11-14 23:16:32
- * @Description:  
-  需求：实现 LazyMan 类
-    const zhangsan = new LazyMan('zhangsan');
-    zhangsan.eat(1).eat(2).sleep(5).eat(3);
-    要求打印如下：
-      log 1
-      log 2
-      await 5s
-      log 3
--->
-<template>
-	<div class="defaults">实现 LazyMan 类</div>
-</template>
+ * @Date: 2022-11-16 00:19:26
+ * @LastEditTime: 2022-11-16 00:29:59
+ * @Description:
 
-<script lang="ts" setup name="defaults">
+需求：实现 LazyMan 类
+  const zhangsan = new LazyMan('zhangsan');
+  zhangsan.eat(1).eat(2).sleep(5).eat(3);
+  要求打印如下：
+    log 1
+    log 2
+    await 5s
+    log 3
+ */
+
 /* 
   关键字： 
     任务队列；
@@ -65,6 +62,5 @@ class LazyMan {
 
 const zhangsan = new LazyMan('zhangsan');
 zhangsan.eat(1).eat(2).sleep(5).eat(3);
-</script>
 
-<style lang="less"></style>
+export {};

@@ -1,7 +1,7 @@
 <template>
 	<!-- <HelloWorld msg="Vite + Vue" /> -->
 	<!-- <DomTraverse /> -->
-	<LazyMan />
+	<Curry />
 </template>
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
@@ -9,7 +9,8 @@
 
 // import HelloWorld from './components/HelloWorld.vue';
 // import DomTraverse from './components/DomTraverse.vue';
-import LazyMan from './components/LazyMan.vue';
+// import './fn/LazyMan';
+import './fn/Curry';
 </script>
 
 <style scoped>
