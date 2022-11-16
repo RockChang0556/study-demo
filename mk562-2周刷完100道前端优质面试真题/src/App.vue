@@ -10,7 +10,8 @@
 // import HelloWorld from './components/HelloWorld.vue';
 // import DomTraverse from './components/DomTraverse.vue';
 // import './fn/LazyMan';
-import './fn/Curry';
+// import './fn/Curry';
+import './fn/Instanceof';
 </script>
 
 <style scoped>
