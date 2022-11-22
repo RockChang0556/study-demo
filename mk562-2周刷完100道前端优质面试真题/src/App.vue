@@ -12,7 +12,7 @@
 // import './fn/LazyMan';
 // import './fn/Curry';
 // import './fn/Instanceof';
-import './fn/MyBind';
+import './fn/MyBindCallApply';
 </script>
 
 <style scoped>
