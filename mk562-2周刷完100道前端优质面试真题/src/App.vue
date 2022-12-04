@@ -1,7 +1,6 @@
 <template>
 	<!-- <HelloWorld msg="Vite + Vue" /> -->
 	<!-- <DomTraverse /> -->
-	<Curry />
 </template>
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
@@ -12,7 +11,8 @@
 // import './fn/LazyMan';
 // import './fn/Curry';
 // import './fn/Instanceof';
-import './fn/MyBindCallApply';
+// import './fn/MyBindCallApply';
+import './fn/EventBus';
 </script>
 
 <style scoped>

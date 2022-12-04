@@ -53,9 +53,10 @@ function toNumber3(num: any) {
 
 /* 
   字符串批量转为整数
+  parseInt 的第二个参数是 2-36 之间的整数
 */
 // console.log('[ res ]-58', ['1', '2', '3'].map(parseInt)); // [1, NaN, NaN]
-// 过程如下: parseInt 的第二个参数是 2-36 之间的整数
+// 过程如下: 
 // ['1', '2', '3'].map((v, i) => parseInt(v, i));
 // parseInt('1', 0); // 1 任何数的零进制都是 1
 // parseInt('2', 1); // NaN 一进制不可能出现 2
