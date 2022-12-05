@@ -12,7 +12,8 @@
 // import './fn/Curry';
 // import './fn/Instanceof';
 // import './fn/MyBindCallApply';
-import './fn/EventBus';
+// import './fn/EventBus';
+import './fn/LRU';
 </script>
 
 <style scoped>
