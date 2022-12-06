@@ -13,7 +13,8 @@
 // import './fn/Instanceof';
 // import './fn/MyBindCallApply';
 // import './fn/EventBus';
-import './fn/LRU';
+// import './fn/LRU';
+import './fn/ArrToTree';
 </script>
 
 <style scoped>
