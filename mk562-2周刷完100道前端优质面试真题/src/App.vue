@@ -15,7 +15,8 @@
 // import './fn/EventBus';
 // import './fn/LRU';
 // import './fn/ArrToTree';
-import './fn/FuncPrototype';
+// import './fn/FuncPrototype';
+import './fn/PromiseThen';
 </script>
 
 <style scoped>
