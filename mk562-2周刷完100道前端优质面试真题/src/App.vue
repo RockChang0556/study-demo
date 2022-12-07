@@ -14,7 +14,8 @@
 // import './fn/MyBindCallApply';
 // import './fn/EventBus';
 // import './fn/LRU';
-import './fn/ArrToTree';
+// import './fn/ArrToTree';
+import './fn/FuncPrototype';
 </script>
 
 <style scoped>
