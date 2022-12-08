@@ -7,16 +7,17 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 
 // import HelloWorld from './components/HelloWorld.vue';
-// import DomTraverse from './components/DomTraverse.vue';
-// import './fn/LazyMan';
-// import './fn/Curry';
-// import './fn/Instanceof';
-// import './fn/MyBindCallApply';
-// import './fn/EventBus';
-// import './fn/LRU';
-// import './fn/ArrToTree';
-// import './fn/FuncPrototype';
-import './fn/PromiseThen';
+// import DomTraverse from './8.编写高质量代码/DomTraverse.vue';
+// import './8.编写高质量代码/LazyMan';
+// import './8.编写高质量代码/Curry';
+// import './8.编写高质量代码/Instanceof';
+// import './8.编写高质量代码/MyBindCallApply';
+// import './8.编写高质量代码/EventBus';
+// import './8.编写高质量代码/LRU';
+// import './9.分析和解决问题的思路/ArrToTree';
+// import './9.分析和解决问题的思路/FuncPrototype';
+// import './9.分析和解决问题的思路/PromiseThen';
+// import './9.分析和解决问题的思路/对象和属性的连续赋值';
 </script>
 
 <style scoped>
