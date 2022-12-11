@@ -18,6 +18,7 @@
 // import './9.分析和解决问题的思路/FuncPrototype';
 // import './9.分析和解决问题的思路/PromiseThen';
 // import './9.分析和解决问题的思路/对象和属性的连续赋值';
+import './10.项目设计/SDK.ts';
 </script>
 
 <style scoped>
