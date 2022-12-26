@@ -5,7 +5,8 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import './02-数据类型容易忽略的细节/数据类型的陷阱';
+// import './02-数据类型容易忽略的细节/01.数据类型的陷阱';
+import './02-数据类型容易忽略的细节/02.数据类型的 8 种判断方式';
 </script>
 
 <style scoped>
