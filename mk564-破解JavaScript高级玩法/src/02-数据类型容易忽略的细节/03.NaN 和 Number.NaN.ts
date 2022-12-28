@@ -31,7 +31,7 @@
 
 /* 
   透过陷阱看本质
-  includes 调用内部的 Number::sameValueZero
+  includes 调用内部的 Number::sameValueZero // https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#sec-numeric-types-number-sameValueZero
   indexOf 调用内部的 Number::equal  // https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#sec-numeric-types-number-equal
 */
 const arr = [NaN];

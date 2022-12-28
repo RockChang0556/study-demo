@@ -1,5 +1,6 @@
 <template>
 	<!-- <HelloWorld msg="Vite + Vue" /> -->
+	<!-- <FormatNumber /> -->
 </template>
 
 <script setup lang="ts">
@@ -7,7 +8,9 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 // import './02-数据类型容易忽略的细节/01.数据类型的陷阱';
 // import './02-数据类型容易忽略的细节/02.数据类型的 8 种判断方式';
-import './02-数据类型容易忽略的细节/03.NaN 和 Number.NaN';
+// import './02-数据类型容易忽略的细节/03.NaN 和 Number.NaN';
+// import FormatNumber from './02-数据类型容易忽略的细节/04.数字千分位的 6 种方法.vue';
+import './02-数据类型容易忽略的细节/05.[]+[],[]+{},{}+[],{}+{}';
 </script>
 
 <style scoped>
