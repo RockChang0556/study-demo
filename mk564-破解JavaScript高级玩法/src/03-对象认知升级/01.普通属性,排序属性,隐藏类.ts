@@ -37,7 +37,7 @@
     数量限制: 一般 10 个
     哪些是内属性
 */
-function CustomObject(eCount, pCount) {
+function CustomObject(this: any, eCount: number, pCount: number) {
 	for (let i = 0; i < eCount; i++) {
 		this[i] = `e-${i}`;
 	}
@@ -51,18 +51,16 @@ function CustomObject(eCount, pCount) {
 // var obj = new CustomObject(6, 6);
 
 // 排序属性6， 普通16个
-var obj = new CustomObject(6, 16);
-console.log('[ obj ]', obj);
+// var obj = new CustomObject(6, 16);
 
 // 排序属性6， 普通50个, 普通属性非线性存储
 // var obj = new CustomObject(6, 50);
 /* 
-  普通属性数量少于 10 个时,被保存在内属性, 
-  微大于 10, 10 个在内属性,其余的在普通属性线性存储, 
-  当远大于 10 时,则多余部分在普通属性非线性存储
+普通属性数量少于 10 个时,被保存在内属性, 
+微大于 10, 10 个在内属性,其余的在普通属性线性存储, 
+当远大于 10 时,则多余部分在普通属性非线性存储
 */
-
-
+// console.log('[ obj ]', obj);
 
 /* 
   隐藏类
