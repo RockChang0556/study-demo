@@ -1,7 +1,7 @@
 /*
  * @Author: Rock Chang
  * @Date: 2022-11-16 00:19:26
- * @LastEditTime: 2022-11-16 00:29:59
+ * @LastEditTime: 2022-12-08 15:50:07
  * @Description:
 
 需求：实现 LazyMan 类
@@ -61,6 +61,6 @@ class LazyMan {
 }
 
 const zhangsan = new LazyMan('zhangsan');
-zhangsan.eat(1).eat(2).sleep(5).eat(3);
+zhangsan.eat(1).eat(2).sleep(2).eat(3);
 
 export {};

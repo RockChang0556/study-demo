@@ -1,0 +1,65 @@
+<!--
+ * @Author: Rock Chang
+ * @Date: 2023-01-29 17:31:35
+ * @LastEditTime: 2023-01-29 17:46:55
+ * @Description:  实现一个节流函数? 如果想要最后一次必须执行的话怎么实现?
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li {
+      height: 300px;
+    }
+
+    li:nth-child(2n) {
+      background: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+  </ul>
+
+  <script>
+
+    function throttle(fn, wait = 1000) {
+      let timer = null;
+      return function () {
+        if (timer) {
+          return
+        }
+        timer = setTimeout(() => {
+          fn.call(this);
+          timer = null;
+        }, wait);
+      }
+
+
+    }
+    const fn1 = throttle(function () {
+      console.log('[  ]', document.documentElement.scrollTop);
+    })
+    window.addEventListener('scroll', fn1)
+
+  </script>
+</body>
+
+</html>

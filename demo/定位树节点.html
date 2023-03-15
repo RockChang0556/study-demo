@@ -11,61 +11,61 @@
 <body>
     <script>
         var msg = [{
-                value: '1000',
-                label: "HR部门工作端",
+            value: '1000',
+            label: "HR部门工作端",
+            children: [{
+                label: "流程任务1",
+                value: '200',
                 children: [{
-                        label: "流程任务1",
-                        value: '200',
-                        children: [{
-                                label: "模型应用",
-                                value: '300'
-                            },
-                            {
-                                label: "活动",
-                                value: '400'
-                            }
-                        ]
-                    },
-                    {
-                        label: "HR流程",
-                        value: '500',
-                        children: [{
-                                label: "流程应用",
-                                value: '600'
-                            },
-                            {
-                                label: "流程活动",
-                                value: '700'
-                            }
-                        ]
-                    },
-                    {
-                        label: "HR社保流程",
-                        value: '1',
-                        children: [{
-                                label: "社保应用",
-                                value: '2'
-                            },
-                            {
-                                label: "社保活动",
-                                value: '3'
-                            }
-                        ]
-                    }
+                    label: "模型应用",
+                    value: '300'
+                },
+                {
+                    label: "活动",
+                    value: '400'
+                }
                 ]
             },
             {
-                label: "外包部门工作端",
-                value: '4'
+                label: "HR流程",
+                value: '500',
+                children: [{
+                    label: "流程应用",
+                    value: '600'
+                },
+                {
+                    label: "流程活动",
+                    value: '700'
+                }
+                ]
             },
             {
-                label: "采购部门工作端",
-                value: '5'
-            },
-            {
-                label: "ERP部门工作端",
-                value: '6'
+                label: "HR社保流程",
+                value: '1',
+                children: [{
+                    label: "社保应用",
+                    value: '2'
+                },
+                {
+                    label: "社保活动",
+                    value: '3'
+                }
+                ]
             }
+            ]
+        },
+        {
+            label: "外包部门工作端",
+            value: '4'
+        },
+        {
+            label: "采购部门工作端",
+            value: '5'
+        },
+        {
+            label: "ERP部门工作端",
+            value: '6'
+        }
         ]
 
         function getValue(data, findKey, findVal) {
@@ -105,97 +105,7 @@
         // let val = getValue(msg, 'value', '700');
         // console.log(val);
 
-        var list = [{
-                id: 1,
-                name: 'child1',
-                parentId: 0
-            },
-            {
-                id: 2,
-                name: 'child2',
-                parentId: 0
-            },
-            {
-                id: 6,
-                name: 'child2_1',
-                parentId: 2
-            },
-            {
-                id: 0,
-                name: 'root',
-                parentId: null
-            },
-            {
-                id: 5,
-                name: 'child1_2',
-                parentId: 1
-            },
-            {
-                id: 4,
-                name: 'child1_1',
-                parentId: 1
-            },
-            {
-                id: 3,
-                name: 'child3',
-                parentId: 0
-            },
-            {
-                id: 7,
-                name: 'child3_1',
-                parentId: 3
-            }
-        ]
 
-        function transform(list) {
-            var tree = [];
-            for (var i = 0; i < list.length; i++) {
-                for (var j = i; j < list.length; j++) {
-                    if (list[j].parentId === list[i].id) {
-                        if (list[i].children === undefined) {
-                            list[i].children = [];
-                        }
-                        list[i].children.push(list[j]);
-                    } else if (list[j].id === list[i].parentId) {
-                        if (list[j].children === undefined) {
-                            list[j].children = [];
-                        }
-                        list[j].children.push(list[i]);
-                    }
-                }
-                if (list[i].parentId === null) {
-                    tree.push(list[i]);
-                }
-            }
-            return tree;
-        }
-        /**
-         * 数组转树  非递归求解
-         * 利用数组和对象相互引用  时间复杂度O(n)
-         * @param {Object} list
-         */
-        function totree(list, parId) {
-            let obj = {};
-            let result = [];
-            //将数组中数据转为键值对结构 (这里的数组和obj会相互引用)
-            list.map(el => {
-                obj[el.id] = el;
-            })
-            for (let i = 0, len = list.length; i < len; i++) {
-                let id = list[i].parentId;
-                if (id == parId) {
-                    result.push(list[i]);
-                    continue;
-                }
-                if (obj[id].children) {
-                    obj[id].children.push(list[i]);
-                } else {
-                    obj[id].children = [list[i]];
-                }
-            }
-            return result;
-        }
-        // console.log('11', totree(list))
 
         var allPathsSourceTarget = function (graph) {
             if (!graph || graph.length === 0) return []
@@ -222,7 +132,7 @@
             [3],
             []
         ]
-        console.log('11', allPathsSourceTarget(graph))
+        // console.log('11', allPathsSourceTarget(graph))
     </script>
 </body>
 
