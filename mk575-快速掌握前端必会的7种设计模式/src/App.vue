@@ -1,13 +1,15 @@
 <template>
 	<div>
 		<a href="https://vitejs.dev" target="_blank"> vite </a>
-		<Factory />
+		<!-- <Factory /> -->
 	</div>
 </template>
 
 <script setup lang="ts">
-import './01-工厂模式/demo';
-import Factory from './01-工厂模式/index.vue';
+// import './01-工厂模式/demo';
+// import Factory from './01-工厂模式/index.vue';
+// import './03-观察者模式/demo';
+import './03-观察者模式/publisher';
 </script>
 
 <style scoped>
