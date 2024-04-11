@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // FIFO页面置换算法
+    function fifo(n, pages) {
+      let frames = new Array(n).fill(-1);
+      let page_faults = 0;
+      let next_frame = 0;
+
+      console.log("FIFO页面置换算法:");
+
+      for (let i = 0; i < pages.length; i++) {
+        let page = pages[i];
+        let found = false;
+
+        // 检测页面是否在内存中
+        for (let j = 0; j < n; j++) {
+          if (frames[j] === page) {
+            found = true;
+            console.log(`页面${page}存在物理块中, 无需替换`);
+            break;
+          }
+        }
+
+        if (!found) {
+          console.log(`页面${page}替换了物理块${next_frame}中的${frames[next_frame]}`);
+          frames[next_frame] = page;
+          next_frame = (next_frame + 1) % n;
+          page_faults++;
+        }
+      }
+
+      console.log("---页面访问顺序:", pages.join(" "));
+      console.log("---缺页率:", page_faults / pages.length);
+    }
+
+    // LRU页面置换算法
+    function lru(n, pages) {
+      let frames = new Array(n).fill(-1);
+      let page_faults = 0;
+
+      console.log("LRU页面置换算法:");
+
+      for (let i = 0; i < pages.length; i++) {
+        let page = pages[i];
+        let found = false;
+
+        // 检测页面是否在内存中
+        for (let j = 0; j < n; j++) {
+          if (frames[j] === page) {
+            found = true;
+            console.log(`页面${page}存在物理块中, 无需替换`);
+            // 将本次的页面移动到内存前面, 这样后面的就一直是最少使用的 (LRU)
+            frames.splice(j, 1);
+            frames.unshift(page);
+            break;
+          }
+        }
+
+        if (!found) {
+          // 未找到页面, 将内存中最后一个页面置换出去, 新的放到第一个
+          const res = frames.pop();
+          frames.unshift(page);
+          console.log(`页面${page}替换了物理块${0}中的${res}`);
+          page_faults++;
+        }
+      }
+
+      console.log("---页面访问顺序:", pages.join(" "));
+      console.log("---缺页率:", page_faults / pages.length);
+    }
+
+    // 示例
+    const n = 4; // 物理块个数
+    const pages = [2, 3, 1, 4, 2, 5, 3, 2, 1, 5]; // 页面序列
+
+    fifo(n, pages);
+    lru(n, pages);
+
+  </script>
+</body>
+
+</html>
